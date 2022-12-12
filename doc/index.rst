@@ -3,18 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to LDBV-BY's documentation!
-===================================
+LDBV-BY - Dokumentation
+=======================
+
+Willkommen auf den Dokumenationsseiten von LDBV-BY.
+
+Unser Github-Repository finden sie `hier <https://github.com/ldbv-by>`_.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. note::
+   Work in Progress
