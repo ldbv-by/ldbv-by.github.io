@@ -7,7 +7,9 @@ Unser Github-Repository finden sie `hier <https://github.com/ldbv-by>`_.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Inhaltsverzeichnis
+
+   opendata
 
 .. note::
    Work in Progress
