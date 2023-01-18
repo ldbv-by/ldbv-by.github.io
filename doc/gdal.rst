@@ -61,7 +61,7 @@ Wenn die durch ``gdalwarp`` erzeugte Datei jetzt beispielsweise in QGIS geladen 
 für die Darstellung verkleinert werden muss. Abhilfe schafft hier ``gdaladdo``, mit dem *Overviews* (Übersichten) in das Bild gerechnet werden können. Die Datei
 wird dadurch zwar größer, aber die deutlich kürzeren Ladezeiten entschädigen dafür ausreichend.
 
-.. code-block:: console
+.. code-block:: shell-session
 
  Erzeugen der Übersichten
  Die Zahlen sind Bruchteile der Ursprungsauflösung, hier also 1/2, 1/4, ...
@@ -142,6 +142,8 @@ wird dadurch zwar größer, aber die deutlich kürzeren Ladezeiten entschädigen
     Band 4 Block=256x256 Type=Byte, ColorInterp=Alpha
       Overviews: 10000x8750, 5000x4375, 2500x2188, 1250x1094
 
+``gdalinfo`` liefert umfangreiche Informationen über einen Datensatz. Neben den Angaben zur Projektion sind hier vor allem
+die Kanäle (vorhandensein eines Alpha-Channels), deren Aufteilung in Blöcke (durch ``TILED=YES``) und die Overviews (durch ``gdaladdo``) interessant.
 
 
 
