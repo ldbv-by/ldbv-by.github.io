@@ -28,7 +28,7 @@ Datenaggregation
 Sie haben Sich mittels aria2c und dem entsprechenden MetaLink-File die DOP-Kacheln ihrer Gemeinde heruntergeladen. Jetzt haben Sie ein Verzeichnis voll mit 1km²-Kacheln,
 Sie hätten aber gerne nur **ein** Bild.
 
-.. figure:: _static/qgis-tiles.png
+.. figure:: images/qgis-tiles.png
 
  QGIS mit allen heruntergeladenen Kacheln der Gemeinde Taufkirchen
 
@@ -38,7 +38,7 @@ Abhilfe schafft hier ``gdalwarp``.
 
  $ gdalwarp -dstalpha -co "TILED=YES" -co "COMPRESS=LZW" 32*.tif taufkirchen.tif
 
-.. figure:: _static/qgis-single.png
+.. figure:: images/qgis-single.png
 
  QGIS mit dem aggregierten Bild und einer freien Webkarte (Top Plus Open des BKG) als Hintergrund
 
