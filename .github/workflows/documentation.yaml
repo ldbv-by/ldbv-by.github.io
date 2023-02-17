@@ -6,9 +6,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
+      - uses: r-lib/actions/setup-pandoc@v2
       - name: Install dependencies
         run: |
-          pip install sphinx sphinx_rtd_theme
+          pip install sphinx sphinx_rtd_theme nbsphinx IPython
       - name: Sphinx build
         run: |
           sphinx-build doc _build
