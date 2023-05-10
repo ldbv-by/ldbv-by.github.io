@@ -4,12 +4,12 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
       - uses: r-lib/actions/setup-pandoc@v2
       - name: Install dependencies
         run: |
-          pip install sphinx sphinx_rtd_theme nbsphinx IPython
+          pip install sphinx sphinx_rtd_theme sphinx_material nbsphinx IPython
       - name: Sphinx build
         run: |
           sphinx-build doc _build
