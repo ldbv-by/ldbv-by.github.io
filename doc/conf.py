@@ -7,8 +7,9 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'LDBV-BY'
-copyright = '2022, LDBV-BY Doku Team'
+copyright = '2023, LDBV-BY Doku Team'
 author = 'LDBV-BY Doku Team'
+
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -28,3 +29,13 @@ language = 'de'
 
 html_theme = 'sphinx_material'
 html_static_path = ['_static']
+
+html_sidebars = {
+    "**": ["logo-text.html", "globaltoc.html", "localtoc.html"]
+}
+
+html_theme_options = {
+    'nav_title': 'LDBV-BY Dokumentation',
+    'logo_icon': '&#xe88e',
+    'globaltoc_depth': -1,
+}
