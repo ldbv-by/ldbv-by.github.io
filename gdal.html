@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html lang="de" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>gdal &#8212; LDBV-BY  Dokumentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="_static/material.css?v=79c92029" />
+    <script src="_static/documentation_options.js?v=245627df"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=70a09b52"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
+    <link rel="search" title="Suche" href="search.html" />
+    <link rel="next" title="Erstellung von Höhenlinien mit OpenData und Open-Source-Werkzeugen" href="notebooks/contourdemo.html" />
+    <link rel="prev" title="aria2" href="aria2.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#gdal" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="index.html" title="LDBV-BY  Dokumentation"
+           class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">&#xe88e</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">LDBV-BY Dokumentation</span>
+          <span class="md-header-nav__topic"> gdal </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+      </div>
+      
+      
+  
+  <script src="_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = ""versions.json"",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">LDBV-BY  Dokumentation</a></li>
+          <li class="md-tabs__item"><a href="opendata.html" class="md-tabs__link">OpenData</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="index.html" title="LDBV-BY Dokumentation" class="md-nav__button md-logo">
+      
+        <i class="md-icon">&#xe88e</i>
+      
+    </a>
+    <a href="index.html"
+       title="LDBV-BY Dokumentation">LDBV-BY Dokumentation</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Inhaltsverzeichnis</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="opendata.html" class="md-nav__link">OpenData</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="opendata.html#welche-daten-sind-verfugbar" class="md-nav__link">Welche Daten sind verfügbar?</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="opendata.html#ja-und" class="md-nav__link">Ja … und?</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="aria2.html" class="md-nav__link">aria2 zum Herunterladen der Daten</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> gdal zur Umwandlung der Daten </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">gdal zur Umwandlung der Daten</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#gdal--page-root" class="md-nav__link">gdal</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#beispiele" class="md-nav__link">Beispiele</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#datenumwandlung" class="md-nav__link">Datenumwandlung</a>
+        </li>
+        <li class="md-nav__item"><a href="#datenaggregation" class="md-nav__link">Datenaggregation</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/gdal.rst.txt">Quellcode anzeigen</a> </li>
+
+  </ul>
+</nav>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="#beispiele" class="md-nav__link">Beispiele</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="#datenumwandlung" class="md-nav__link">Datenumwandlung</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#datenaggregation" class="md-nav__link">Datenaggregation</a>
+      
+    
+    </li></ul>
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="notebooks/contourdemo.html" class="md-nav__link">Erstellung von Höhenlinien mit OpenData und Open-Source-Werkzeugen</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="notebooks/3dmesh.html" class="md-nav__link">Erstellung eines 3D-Modells</a>
+      
+    
+    </li></ul>
+    
+    </li></ul>
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#gdal--page-root" class="md-nav__link">gdal</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#beispiele" class="md-nav__link">Beispiele</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#datenumwandlung" class="md-nav__link">Datenumwandlung</a>
+        </li>
+        <li class="md-nav__item"><a href="#datenaggregation" class="md-nav__link">Datenaggregation</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="_sources/gdal.rst.txt">Quellcode anzeigen</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="gdal">
+<h1 id="gdal--page-root">gdal<a class="headerlink" href="#gdal--page-root" title="Link to this heading">¶</a></h1>
+<p><a class="reference external" href="https://gdal.org/">gdal</a> ist eine Bibliothek zur Bearbeitung und Umwandlung von räumlichen Raster- und Vektordaten. Daneben
+bietet es auch zahlreiche Kommandozeilenprogramme.</p>
+<p>gdal ist Open Source und für Linux und Windows verfügbar. Zur Installation sei auf die oben verlinkte Website verwiesen.</p>
+<section id="beispiele">
+<h2 id="beispiele">Beispiele<a class="headerlink" href="#beispiele" title="Link to this heading">¶</a></h2>
+<section id="datenumwandlung">
+<h3 id="datenumwandlung">Datenumwandlung<a class="headerlink" href="#datenumwandlung" title="Link to this heading">¶</a></h3>
+<p>Das Digitale Geländemodell wird im Format GeoTIFF zur Verfügung gestellt. Sie wollen die Daten jedoch
+im Format ASCII Grid:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gdal_translate<span class="w"> </span>-of<span class="w"> </span>AAIGrid<span class="w"> </span>691_5327.tif<span class="w"> </span>691_5327.asc
+</pre></div>
+</div>
+<p>Der Schalter <code class="docutils literal notranslate"><span class="pre">-of</span></code> gibt hierbei das Ausgabeformat an. <code class="docutils literal notranslate"><span class="pre">gdal_translate</span> <span class="pre">--formats</span></code> listet die verfügbaren Quell- und Zielformate auf,
+<code class="docutils literal notranslate"><span class="pre">gdal_translate</span> <span class="pre">-h</span></code> liefert eine Kurzbeschreibung der Parameter und die Seite <a class="reference external" href="https://gdal.org/programs/gdal_translate.html">gdal_translate</a> zeigt eine
+ausführliche Anleitung zu diesem Kommandozeilentool.</p>
+</section>
+<section id="datenaggregation">
+<h3 id="datenaggregation">Datenaggregation<a class="headerlink" href="#datenaggregation" title="Link to this heading">¶</a></h3>
+<p>Sie haben Sich mittels aria2c und dem entsprechenden MetaLink-File die DOP-Kacheln ihrer Gemeinde heruntergeladen. Jetzt haben Sie ein Verzeichnis voll mit 1km²-Kacheln,
+Sie hätten aber gerne nur <strong>ein</strong> Bild.</p>
+<figure class="align-default" id="id2">
+<img alt="_images/qgis-tiles.png" src="_images/qgis-tiles.png"/>
+<figcaption>
+<p><span class="caption-text">QGIS mit allen heruntergeladenen Kacheln der Gemeinde Taufkirchen</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Abhilfe schafft hier <code class="docutils literal notranslate"><span class="pre">gdalwarp</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gdalwarp<span class="w"> </span>-dstalpha<span class="w"> </span>-co<span class="w"> </span><span class="s2">"TILED=YES"</span><span class="w"> </span>-co<span class="w"> </span><span class="s2">"COMPRESS=LZW"</span><span class="w"> </span><span class="m">32</span>*.tif<span class="w"> </span>taufkirchen.tif
+</pre></div>
+</div>
+<figure class="align-default" id="id3">
+<img alt="_images/qgis-single.png" src="_images/qgis-single.png"/>
+<figcaption>
+<p><span class="caption-text">QGIS mit dem aggregierten Bild und einer freien Webkarte (Top Plus Open des BKG) als Hintergrund</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">-dstalpha</span></code></dt><dd><p>fügt einen Alpha-Kanal für die Transparenz hinzu. Dadurch wird an den Stellen ohne Informationen der Hintergrund sichtbar.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-co</span> <span class="pre">"TILED=YES"</span></code></dt><dd><p>sorgt für eine interne Kachelung des Bildes. Dadurch werden beim Hineinzoomen in das Bild nur die Teile gelesen, die für die Darstellung benötigt werden.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-co</span> <span class="pre">"COMPRESS=LZW"</span></code></dt><dd><p>sorgt dafür, dass die Rasterdaten im GeoTIFF komprimiert werden.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">32*.tif</span></code></dt><dd><p>Die Dateinamen der Kacheln beginnen in diesem Falle alle mit 32. <code class="docutils literal notranslate"><span class="pre">gdalwarp</span></code> liest alle Dateien ein, die auf dieses Pattern passen.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">taufkirchen.tif</span></code></dt><dd><p>Der Name der Zieldatei, die durch <code class="docutils literal notranslate"><span class="pre">gdalwarp</span></code> erzeugt wird.</p>
+</dd>
+</dl>
+<p>Wenn die durch <code class="docutils literal notranslate"><span class="pre">gdalwarp</span></code> erzeugte Datei jetzt beispielsweise in QGIS geladen wird, dauert die Darstellung etwas, weil zunächst das ganze Bild geladen und dann
+für die Darstellung verkleinert werden muss. Abhilfe schafft hier <code class="docutils literal notranslate"><span class="pre">gdaladdo</span></code>, mit dem <em>Overviews</em> (Übersichten) in das Bild gerechnet werden können. Die Datei
+wird dadurch zwar größer, aber die deutlich kürzeren Ladezeiten entschädigen dafür ausreichend.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">Erzeugen der Übersichten</span>
+<span class="go">Die Zahlen sind Bruchteile der Ursprungsauflösung, hier also 1/2, 1/4, ...</span>
+<span class="gp">$ </span>gdaladdo<span class="w"> </span>taufkirchen.tif<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">16</span>
+<span class="go">Das Resultat mit gdalinfo betrachten:</span>
+<span class="gp">$ </span>gdalinfo<span class="w"> </span>taufkirchen.tif
+<span class="go">   Driver: GTiff/GeoTIFF</span>
+<span class="go">   Files: taufkirchen.tif</span>
+<span class="go">   Size is 20000, 17500</span>
+<span class="go">   Coordinate System is:</span>
+<span class="go">   PROJCRS["ETRS89 / UTM zone 32N",</span>
+<span class="go">       BASEGEOGCRS["ETRS89",</span>
+<span class="go">           DATUM["European Terrestrial Reference System 1989",</span>
+<span class="go">               ELLIPSOID["GRS 1980",6378137,298.257222101,</span>
+<span class="go">                   LENGTHUNIT["metre",1]]],</span>
+<span class="go">           PRIMEM["Greenwich",0,</span>
+<span class="go">               ANGLEUNIT["degree",0.0174532925199433]],</span>
+<span class="go">           ID["EPSG",4258]],</span>
+<span class="go">       CONVERSION["UTM zone 32N",</span>
+<span class="go">           METHOD["Transverse Mercator",</span>
+<span class="go">               ID["EPSG",9807]],</span>
+<span class="go">           PARAMETER["Latitude of natural origin",0,</span>
+<span class="go">               ANGLEUNIT["degree",0.0174532925199433],</span>
+<span class="go">               ID["EPSG",8801]],</span>
+<span class="go">           PARAMETER["Longitude of natural origin",9,</span>
+<span class="go">               ANGLEUNIT["degree",0.0174532925199433],</span>
+<span class="go">               ID["EPSG",8802]],</span>
+<span class="go">           PARAMETER["Scale factor at natural origin",0.9996,</span>
+<span class="go">               SCALEUNIT["unity",1],</span>
+<span class="go">               ID["EPSG",8805]],</span>
+<span class="go">           PARAMETER["False easting",500000,</span>
+<span class="go">               LENGTHUNIT["metre",1],</span>
+<span class="go">               ID["EPSG",8806]],</span>
+<span class="go">           PARAMETER["False northing",0,</span>
+<span class="go">               LENGTHUNIT["metre",1],</span>
+<span class="go">               ID["EPSG",8807]]],</span>
+<span class="go">       CS[Cartesian,2],</span>
+<span class="go">           AXIS["(E)",east,</span>
+<span class="go">               ORDER[1],</span>
+<span class="go">               LENGTHUNIT["metre",1]],</span>
+<span class="go">           AXIS["(N)",north,</span>
+<span class="go">               ORDER[2],</span>
+<span class="go">               LENGTHUNIT["metre",1]],</span>
+<span class="go">       USAGE[</span>
+<span class="go">           SCOPE["unknown"],</span>
+<span class="go">           AREA["Europe - 6°E to 12°E and ETRS89 by country"],</span>
+<span class="go">           BBOX[38.76,6,83.92,12]],</span>
+<span class="go">       ID["EPSG",25832]]</span>
+<span class="go">   Data axis to CRS axis mapping: 1,2</span>
+<span class="go">   Origin = (692000.000000000000000,5326000.000000000000000)</span>
+<span class="go">   Pixel Size = (0.400000000000000,-0.400000000000000)</span>
+<span class="go">   Metadata:</span>
+<span class="go">     AREA_OR_POINT=Area</span>
+<span class="go">     BILDFLUG_DATUM=*</span>
+<span class="go">     BILDFLUG_NUMMER=*</span>
+<span class="go">     BILDFLUG_UNTERNUMMER=0</span>
+<span class="go">   Image Structure Metadata:</span>
+<span class="go">     COMPRESSION=LZW</span>
+<span class="go">     INTERLEAVE=PIXEL</span>
+<span class="go">   Corner Coordinates:</span>
+<span class="go">   Upper Left  (  692000.000, 5326000.000) ( 11d34'36.77"E, 48d 3'30.12"N)</span>
+<span class="go">   Lower Left  (  692000.000, 5319000.000) ( 11d34'25.48"E, 47d59'43.62"N)</span>
+<span class="go">   Upper Right (  700000.000, 5326000.000) ( 11d41' 2.87"E, 48d 3'21.27"N)</span>
+<span class="go">   Lower Right (  700000.000, 5319000.000) ( 11d40'51.11"E, 47d59'34.79"N)</span>
+<span class="go">   Center      (  696000.000, 5322500.000) ( 11d37'44.06"E, 48d 1'32.50"N)</span>
+<span class="go">   Band 1 Block=256x256 Type=Byte, ColorInterp=Red</span>
+<span class="go">     Overviews: 10000x8750, 5000x4375, 2500x2188, 1250x1094</span>
+<span class="go">     Mask Flags: PER_DATASET ALPHA</span>
+<span class="go">     Overviews of mask band: 10000x8750, 5000x4375, 2500x2188, 1250x1094</span>
+<span class="go">   Band 2 Block=256x256 Type=Byte, ColorInterp=Green</span>
+<span class="go">     Overviews: 10000x8750, 5000x4375, 2500x2188, 1250x1094</span>
+<span class="go">     Mask Flags: PER_DATASET ALPHA</span>
+<span class="go">     Overviews of mask band: 10000x8750, 5000x4375, 2500x2188, 1250x1094</span>
+<span class="go">   Band 3 Block=256x256 Type=Byte, ColorInterp=Blue</span>
+<span class="go">     Overviews: 10000x8750, 5000x4375, 2500x2188, 1250x1094</span>
+<span class="go">     Mask Flags: PER_DATASET ALPHA</span>
+<span class="go">     Overviews of mask band: 10000x8750, 5000x4375, 2500x2188, 1250x1094</span>
+<span class="go">   Band 4 Block=256x256 Type=Byte, ColorInterp=Alpha</span>
+<span class="go">     Overviews: 10000x8750, 5000x4375, 2500x2188, 1250x1094</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">gdalinfo</span></code> liefert umfangreiche Informationen über einen Datensatz. Neben den Angaben zur Projektion sind hier vor allem
+die Kanäle (vorhandensein eines Alpha-Channels), deren Aufteilung in Blöcke (durch <code class="docutils literal notranslate"><span class="pre">TILED=YES</span></code>) und die Overviews (durch <code class="docutils literal notranslate"><span class="pre">gdaladdo</span></code>) interessant.</p>
+</section>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+    
+          
+            <a href="aria2.html" title="aria2"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> "Previous" </span> aria2 </span>
+              </div>
+            </a>
+          
+          
+            <a href="notebooks/contourdemo.html" title="Erstellung von Höhenlinien mit OpenData und Open-Source-Werkzeugen"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> "Next" </span> Erstellung von Höhenlinien mit OpenData und Open-Source-Werkzeugen </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" style="text-decoration: none;">
+        <img src="_static/creativecommons-88x31.png" alt="Creative Commons License"/>
+    </a>LDBV-BY Dokumentation is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative
+    Commons Attribution-ShareAlike 4.0 International License.</a>
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2023, LDBV-BY Doku Team.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>

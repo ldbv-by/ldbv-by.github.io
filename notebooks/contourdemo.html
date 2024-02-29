@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+
+<html lang="de" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>Erstellung von Höhenlinien mit OpenData und Open-Source-Werkzeugen &#8212; LDBV-BY  Dokumentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css" />
+    <script src="../_static/documentation_options.js?v=245627df"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/translations.js?v=70a09b52"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="Erstellung eines 3D-Modells" href="3dmesh.html" />
+    <link rel="prev" title="gdal" href="../gdal.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#notebooks/contourdemo" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="LDBV-BY  Dokumentation"
+           class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">&#xe88e</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">LDBV-BY Dokumentation</span>
+          <span class="md-header-nav__topic"> Erstellung von Höhenlinien mit OpenData und Open-Source-Werkzeugen </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+      </div>
+      
+      
+  
+  <script src="../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../"versions.json"",
+        target_loc = "../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">LDBV-BY  Dokumentation</a></li>
+          <li class="md-tabs__item"><a href="../opendata.html" class="md-tabs__link">OpenData</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="LDBV-BY Dokumentation" class="md-nav__button md-logo">
+      
+        <i class="md-icon">&#xe88e</i>
+      
+    </a>
+    <a href="../index.html"
+       title="LDBV-BY Dokumentation">LDBV-BY Dokumentation</a>
+  </label>
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Inhaltsverzeichnis</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../opendata.html" class="md-nav__link">OpenData</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="../opendata.html#welche-daten-sind-verfugbar" class="md-nav__link">Welche Daten sind verfügbar?</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../opendata.html#ja-und" class="md-nav__link">Ja … und?</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="../aria2.html" class="md-nav__link">aria2 zum Herunterladen der Daten</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="../gdal.html" class="md-nav__link">gdal zur Umwandlung der Daten</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> Erstellung von Höhenlinien mit OpenData und Open-Source-Werkzeugen </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">Erstellung von Höhenlinien mit OpenData und Open-Source-Werkzeugen</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#notebooks-contourdemo--page-root" class="md-nav__link">Erstellung von Höhenlinien mit OpenData und Open-Source-Werkzeugen</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#Geländemodell-laden" class="md-nav__link">Geländemodell laden</a>
+        </li>
+        <li class="md-nav__item"><a href="#Geländemodell-glätten" class="md-nav__link">Geländemodell glätten</a>
+        </li>
+        <li class="md-nav__item"><a href="#Hangneigung" class="md-nav__link">Hangneigung</a>
+        </li>
+        <li class="md-nav__item"><a href="#Höhenlinien-berechnen" class="md-nav__link">Höhenlinien berechnen</a>
+        </li>
+        <li class="md-nav__item"><a href="#Höhenlinien-reduzieren" class="md-nav__link">Höhenlinien reduzieren</a>
+        </li>
+        <li class="md-nav__item"><a href="#Höhenlinien-speichern" class="md-nav__link">Höhenlinien speichern</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/notebooks/contourdemo.ipynb.txt">Quellcode anzeigen</a> </li>
+
+  </ul>
+</nav>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="#Geländemodell-laden" class="md-nav__link">Geländemodell laden</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#Geländemodell-glätten" class="md-nav__link">Geländemodell glätten</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#Hangneigung" class="md-nav__link">Hangneigung</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#Höhenlinien-berechnen" class="md-nav__link">Höhenlinien berechnen</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#Höhenlinien-reduzieren" class="md-nav__link">Höhenlinien reduzieren</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#Höhenlinien-speichern" class="md-nav__link">Höhenlinien speichern</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="3dmesh.html" class="md-nav__link">Erstellung eines 3D-Modells</a>
+      
+    
+    </li></ul>
+    
+    </li></ul>
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#notebooks-contourdemo--page-root" class="md-nav__link">Erstellung von Höhenlinien mit OpenData und Open-Source-Werkzeugen</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#Geländemodell-laden" class="md-nav__link">Geländemodell laden</a>
+        </li>
+        <li class="md-nav__item"><a href="#Geländemodell-glätten" class="md-nav__link">Geländemodell glätten</a>
+        </li>
+        <li class="md-nav__item"><a href="#Hangneigung" class="md-nav__link">Hangneigung</a>
+        </li>
+        <li class="md-nav__item"><a href="#Höhenlinien-berechnen" class="md-nav__link">Höhenlinien berechnen</a>
+        </li>
+        <li class="md-nav__item"><a href="#Höhenlinien-reduzieren" class="md-nav__link">Höhenlinien reduzieren</a>
+        </li>
+        <li class="md-nav__item"><a href="#Höhenlinien-speichern" class="md-nav__link">Höhenlinien speichern</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/notebooks/contourdemo.ipynb.txt">Quellcode anzeigen</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="Erstellung-von-Höhenlinien-mit-OpenData-und-Open-Source-Werkzeugen">
+<h1 id="notebooks-contourdemo--page-root">Erstellung von Höhenlinien mit OpenData und Open-Source-Werkzeugen<a class="headerlink" href="#notebooks-contourdemo--page-root" title="Link to this heading">¶</a></h1>
+<p>Im Folgenden soll beispelhaft gezeigt werden, wie man aus einem Digitalen Geländemodell (DGM) bzw. digial elevation model (DEM) Höhenlinien ableiten kann.</p>
+<p>Zum Einsatz kommen Python 3.10 und diverse Open-Source-Bibliotheken.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://rasterio.readthedocs.io/en/latest/">Rasterio</a> zur Verarbeitung von Raster-Geodaten</p></li>
+<li><p><a class="reference external" href="https://numpy.org/">NumPy</a> zur Manipulation (Umrechung) von Daten</p></li>
+<li><p><a class="reference external" href="https://scipy.org/">SciPy</a> zum Filtern und Glätten der Daten</p></li>
+<li><p><a class="reference external" href="https://github.com/makepath/xarray-spatial">xarray-spatial</a> zur Analyse der Daten</p></li>
+<li><p><a class="reference external" href="https://richdem.readthedocs.io/en/latest/">RichDEM</a> zur Berechnung der Hangneigung</p></li>
+<li><p><a class="reference external" href="https://shapely.readthedocs.io/en/stable/manual.html">Shapely</a> zur Manipulation von Vektordaten (klassifiziertes Gefälle und Höhenlinien)</p></li>
+<li><p><a class="reference external" href="https://fiona.readthedocs.io/en/latest/">Fiona</a> zum Speichern der Höhenlinien als Shape-File</p></li>
+</ul>
+<p>Dazu wurden zur Darstellung des Verfahrens</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://jupyter.org/">jupyter</a>,</p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/stable/tutorials/introductory/pyplot.html">matplotlib-pyplot</a> und</p></li>
+<li><p><a class="reference external" href="https://geopandas.org/en/stable/">GeoPandas</a></p></li>
+</ul>
+<p>verwendet.</p>
+<p>Diverse weitere beispielhafte Darstellungen wurden mit <a class="reference external" href="https://www.qgis.org/de/site/">QGIS</a> erstellt.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">gaussian_filter</span>
+<span class="kn">from</span> <span class="nn">xrspatial</span> <span class="kn">import</span> <span class="n">focal</span>
+</pre></div>
+</div>
+</div>
+<section id="Geländemodell-laden">
+<h2 id="Geländemodell-laden">Geländemodell laden<a class="headerlink" href="#Geländemodell-laden" title="Link to this heading">¶</a></h2>
+<p>Die Datei <code class="docutils literal notranslate"><span class="pre">`725_5287.tif</span></code> &lt;<a class="reference external" href="https://download1.bayernwolke.de/a/dgm/dgm1/725_5287.tif">https://download1.bayernwolke.de/a/dgm/dgm1/725_5287.tif</a>&gt;`__ aus dem OpenData-Angebot der bayerischen Vermessungsverwaltung enthält ein digitales Geländemodell mit 1m Bodenauflösung für ein 1km² großes Gebiet südwestlich des Wendelsteingipfels.</p>
+<p>Zunächst wird diese Datei mittels <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> geladen.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"725_5287.tif"</span><span class="p">)</span> <span class="k">as</span> <span class="n">dem_file</span><span class="p">:</span>
+    <span class="n">dem</span> <span class="o">=</span> <span class="n">dem_file</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">transform</span> <span class="o">=</span> <span class="n">dem_file</span><span class="o">.</span><span class="n">transform</span>
+    <span class="n">crs</span> <span class="o">=</span> <span class="n">dem_file</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">wkt</span>
+    <span class="n">bounds</span> <span class="o">=</span> <span class="n">dem_file</span><span class="o">.</span><span class="n">bounds</span>
+</pre></div>
+</div>
+</div>
+<p>Mit <code class="docutils literal notranslate"><span class="pre">pyplot</span></code> aus dem <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>-Paket lassen sich die Daten graphisch darstellen:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gist_earth'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_contourdemo_5_0.png" src="../_images/notebooks_contourdemo_5_0.png"/>
+</div>
+</div>
+</section>
+<section id="Geländemodell-glätten">
+<h2 id="Geländemodell-glätten">Geländemodell glätten<a class="headerlink" href="#Geländemodell-glätten" title="Link to this heading">¶</a></h2>
+<p>Das Geländemodell ist sehr hoch aufgelöst. Wenn man sich mittels <code class="docutils literal notranslate"><span class="pre">gdal_contour</span></code> die Höhenlinien unmittelbar aus dem DGM ableiten lässt werden sie sehr unruhig.</p>
+<p>Zum selbst ausprobieren:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_contour -i 5 725_5287.tif 725_5287.shp
+</pre></div>
+</div>
+<p>Wenn man sich die daraus entstandene Shape-Datei - beispielsweise mit QGIS - anschaut, dann sieht man was gemeint ist …</p>
+<p><img alt="gdal_contours" src="../_images/small_725_5287.png"/></p>
+<p>Es ist also notwendig, das DGM vorher zu glätten. Hierzu verwenden wir einen Algorithmus, der in folgender Publikation beschrieben ist:</p>
+<blockquote>
+<div><ol class="upperalpha simple" start="16">
+<li><p>Kettunen, C. Koski, and J. Oksanen, “A design of contour generation for topographic maps with adaptive DEM smoothing,” International Journal of Cartography, vol. 3, no. 1, pp. 19–30, Jun. 2017. DOI: <a class="reference external" href="https://doi.org/10.1080/23729333.2017.1300998">10.1080/23729333.2017.1300998</a></p></li>
+</ol>
+</div></blockquote>
+<p>Die Parameter für das Gauss-Filter sind durch Ausprobieren ermittelt worden und stellen sicher nicht der Weisheit letzten Schluss dar …</p>
+<p>Als Resultat erhalten wir ein geglättetes DGM.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smoothend_dem</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">hard_smoothend_dem</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">tpi</span> <span class="o">=</span> <span class="n">dem</span> <span class="o">-</span> <span class="n">focal</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">dem</span><span class="p">))</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">tpi_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tpi</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tpi</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">tpi</span><span class="p">)</span>
+<span class="n">tpi_norm</span> <span class="o">=</span> <span class="n">tpi_pos</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">tpi_pos</span><span class="p">)</span>
+<span class="n">cdem</span> <span class="o">=</span> <span class="n">tpi_norm</span> <span class="o">*</span> <span class="n">smoothend_dem</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">tpi_norm</span><span class="p">)</span> <span class="o">*</span> <span class="n">hard_smoothend_dem</span>
+
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cdem</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'gist_earth'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_contourdemo_7_0.png" src="../_images/notebooks_contourdemo_7_0.png"/>
+</div>
+</div>
+</section>
+<section id="Hangneigung">
+<h2 id="Hangneigung">Hangneigung<a class="headerlink" href="#Hangneigung" title="Link to this heading">¶</a></h2>
+<p>Nun rechnen wir uns aus dem geglätteten DGM noch die Hangneigung (slope), die wir später brauchen.</p>
+<p>Die Warnungen von <code class="docutils literal notranslate"><span class="pre">richdem</span></code> interessieren uns an dieser Stelle nicht.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">richdem</span> <span class="k">as</span> <span class="nn">rd</span>
+<span class="n">rdem</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">rdarray</span><span class="p">(</span><span class="n">cdem</span><span class="p">,</span> <span class="n">no_data</span><span class="o">=-</span><span class="mi">9999</span><span class="p">)</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="n">rd</span><span class="o">.</span><span class="n">TerrainAttribute</span><span class="p">(</span><span class="n">rdem</span><span class="p">,</span> <span class="n">attrib</span><span class="o">=</span><span class="s1">'slope_degrees'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Warning! No geotransform defined. Choosing a standard one! (Top left cell's top let corner at &lt;0,0&gt;; cells are 1x1.)
+Warning! No geotransform defined. Choosing a standard one! (Top left cell's top let corner at &lt;0,0&gt;; cells are 1x1.)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+A Slope calculation (degrees)
+C Horn, B.K.P., 1981. Hill shading and the reflectance map. Proceedings of the IEEE 69, 14–47. doi:10.1109/PROC.1981.11918
+
+t Wall-time = 0.0267122====================== ] (99% - 0.0s - 1 threads)===== ] (98% - 0.0s - 1 threads)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_contourdemo_10_0.png" src="../_images/notebooks_contourdemo_10_0.png"/>
+</div>
+</div>
+<p>Die ermittelte Hangneigung wird nun in 10°-Schritte klassifiziert und in Polygone „verpackt“.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">shape</span><span class="p">,</span> <span class="n">MultiPolygon</span>
+<span class="kn">from</span> <span class="nn">rasterio</span> <span class="kn">import</span> <span class="n">features</span>
+<span class="n">slope_classified</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">slope</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="nb">min</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">slope_classified</span><span class="p">))</span>
+<span class="nb">max</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">slope_classified</span><span class="p">))</span>
+<span class="n">rawclasses</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">rawclasses</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">shapes</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">shapes</span><span class="p">(</span><span class="n">slope_classified</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">shapes</span><span class="p">):</span>
+    <span class="n">sg</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="n">s</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">shape</span><span class="p">(</span><span class="n">sg</span><span class="p">)</span>
+    <span class="n">rawclasses</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">rawclasses</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">rawclasses</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">classes</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">classes</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">classes</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">classes</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">classes</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">classes</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">v</span><span class="p">]:</span>
+            <span class="n">classes</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">classes</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">classes</span><span class="p">[</span><span class="n">w</span><span class="p">])</span>
+            <span class="n">classes</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">classes</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">classes</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">geom_type</span> <span class="o">==</span> <span class="s1">'Polygon'</span><span class="p">:</span>
+                <span class="n">classes</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">MultiPolygon</span><span class="p">([</span><span class="n">classes</span><span class="p">[</span><span class="n">v</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">slope_classified</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_contourdemo_13_0.png" src="../_images/notebooks_contourdemo_13_0.png"/>
+</div>
+</div>
+</section>
+<section id="Höhenlinien-berechnen">
+<h2 id="Höhenlinien-berechnen">Höhenlinien berechnen<a class="headerlink" href="#Höhenlinien-berechnen" title="Link to this heading">¶</a></h2>
+<p>Nun lassen wir uns die Höhenlinien berechnen. Das macht <code class="docutils literal notranslate"><span class="pre">contourpy</span></code> für uns.</p>
+<p>Die berechneten Linien speichern wir - in <code class="docutils literal notranslate"><span class="pre">shapely</span></code>-Linestrings umgewandelt, in einem Dictionary mit der Höhe als Key.</p>
+<p>Wir haben jetzt Höhenlinien. :-)</p>
+<p>Aber: wir sind im alpinen Bereich unterwegs, die Hänge sind steil. Aus Höhenlinien mit 5m Abstand wird bei entsprechend kleinem Maßstab ein vollflächiger Farbklecks.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shapely</span> <span class="kn">import</span> <span class="n">LineString</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">mapping</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span> <span class="nn">contourpy</span> <span class="kn">import</span> <span class="n">contour_generator</span>
+<span class="kn">from</span> <span class="nn">shapely.affinity</span> <span class="kn">import</span> <span class="n">affine_transform</span>
+<span class="kn">from</span> <span class="nn">contourpy.util.mpl_renderer</span> <span class="kn">import</span> <span class="n">MplRenderer</span> <span class="k">as</span> <span class="n">Renderer</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">10</span>
+<span class="n">stop</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">cont_gen</span> <span class="o">=</span> <span class="n">contour_generator</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="n">cdem</span><span class="p">,</span> <span class="n">quad_as_tri</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">contour_lines</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">level</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">levels</span><span class="p">):</span>
+    <span class="n">generated_lines</span> <span class="o">=</span> <span class="n">cont_gen</span><span class="o">.</span><span class="n">lines</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+    <span class="n">contour_lines</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">level</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">g_line</span> <span class="ow">in</span> <span class="n">generated_lines</span><span class="p">:</span>
+        <span class="n">contour_lines</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">level</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">affine_transform</span><span class="p">(</span><span class="n">LineString</span><span class="p">(</span><span class="n">g_line</span><span class="p">),</span> <span class="n">transform</span><span class="o">.</span><span class="n">to_shapely</span><span class="p">()))</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="n">contours</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">lvl</span><span class="p">,</span> <span class="n">lns</span> <span class="ow">in</span> <span class="n">contour_lines</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lns</span><span class="p">:</span>
+            <span class="n">contours</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">contours</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_contourdemo_15_0.png" src="../_images/notebooks_contourdemo_15_0.png"/>
+</div>
+</div>
+</section>
+<section id="Höhenlinien-reduzieren">
+<h2 id="Höhenlinien-reduzieren">Höhenlinien reduzieren<a class="headerlink" href="#Höhenlinien-reduzieren" title="Link to this heading">¶</a></h2>
+<p>Wir haben die Höhenlinien als Linestrings und die klassifizierten Hangneigungen als Polygone. Leider kann <code class="docutils literal notranslate"><span class="pre">shapely</span></code> Linestrings nicht unmittelbar an Polygonen abschneiden. Wir gehen also über einen Zwischenschnitt und zerschneiden die Linie zunächst an den Polygongrenzen. Anschliessend prüfen wir, welche Linien wegfallen und welche wir behalten wollen.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shapely.ops</span> <span class="kn">import</span> <span class="n">split</span>
+<span class="kn">from</span> <span class="nn">shapely</span> <span class="kn">import</span> <span class="n">MultiLineString</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">cuts</span> <span class="o">=</span> <span class="p">{</span><span class="mi">5</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span> <span class="mi">60</span><span class="p">}</span>
+<span class="n">cutted_lines</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">steps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">steps</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="n">h</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">contour_lines</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">h</span> <span class="o">%</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">h</span> <span class="o">%</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]:</span>
+        <span class="n">cutted_lines</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">classes</span><span class="p">[</span><span class="n">cuts</span><span class="p">[</span><span class="n">s</span><span class="p">]]</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">MultiLineString</span><span class="p">(</span><span class="n">contour_lines</span><span class="p">[</span><span class="n">val</span><span class="p">])</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">split</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">parts</span><span class="o">.</span><span class="n">geom_type</span> <span class="o">==</span> <span class="s1">'GeometryCollection'</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">parts</span><span class="o">.</span><span class="n">geoms</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">geom_type</span> <span class="o">==</span> <span class="s1">'LineString'</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="n">g</span><span class="o">.</span><span class="n">covered_by</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+                            <span class="n">cutted_lines</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="n">h</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">contour_lines</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">h</span> <span class="o">%</span> <span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]:</span>
+        <span class="n">cutted_lines</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">contour_lines</span><span class="p">[</span><span class="n">val</span><span class="p">]:</span>
+            <span class="n">cutted_lines</span><span class="p">[</span><span class="n">val</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="n">contours</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">lvl</span><span class="p">,</span> <span class="n">lns</span> <span class="ow">in</span> <span class="n">cutted_lines</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lns</span><span class="p">:</span>
+            <span class="n">contours</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">contours</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_contourdemo_17_0.png" src="../_images/notebooks_contourdemo_17_0.png"/>
+</div>
+</div>
+</section>
+<section id="Höhenlinien-speichern">
+<h2 id="Höhenlinien-speichern">Höhenlinien speichern<a class="headerlink" href="#Höhenlinien-speichern" title="Link to this heading">¶</a></h2>
+<p>Zum Schluss werden die so berechneten Höhenlinien in ein Shapefile geschrieben. Nun können sie in einem GIS-Programm angeschaut und gestyled werden.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">fiona</span>
+
+<span class="n">contours_schema</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'geometry'</span><span class="p">:</span> <span class="s1">'LineString'</span><span class="p">,</span>
+    <span class="s1">'properties'</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">([</span>
+        <span class="p">(</span><span class="s1">'elev'</span><span class="p">,</span> <span class="s1">'float'</span><span class="p">)</span>
+    <span class="p">])</span>
+<span class="p">}</span>
+
+<span class="k">with</span> <span class="n">fiona</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+        <span class="s1">'contours.shp'</span><span class="p">,</span>
+        <span class="s1">'w'</span><span class="p">,</span>
+        <span class="n">driver</span><span class="o">=</span><span class="s1">'ESRI Shapefile'</span><span class="p">,</span>
+        <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span>
+        <span class="n">schema</span><span class="o">=</span><span class="n">contours_schema</span><span class="p">)</span> <span class="k">as</span> <span class="n">target</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">level</span><span class="p">,</span> <span class="n">lns</span> <span class="ow">in</span> <span class="n">cutted_lines</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lns</span><span class="p">:</span>
+                <span class="n">ls</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+                <span class="n">target</span><span class="o">.</span><span class="n">write</span><span class="p">({</span><span class="s1">'geometry'</span><span class="p">:</span> <span class="n">ls</span><span class="p">,</span> <span class="s1">'properties'</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">'elev'</span><span class="p">,</span> <span class="n">level</span><span class="p">)])})</span>
+</pre></div>
+</div>
+</div>
+<p>Hier ein Beispiel für Höhenlinien nach Bearbeitung mit QGIS: <img alt="berechnete Höhenlinien" src="../_images/small_c2.png"/></p>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+    
+          
+            <a href="../gdal.html" title="gdal"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> "Previous" </span> gdal </span>
+              </div>
+            </a>
+          
+          
+            <a href="3dmesh.html" title="Erstellung eines 3D-Modells"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> "Next" </span> Erstellung eines 3D-Modells </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" style="text-decoration: none;">
+        <img src="../_static/creativecommons-88x31.png" alt="Creative Commons License"/>
+    </a>LDBV-BY Dokumentation is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative
+    Commons Attribution-ShareAlike 4.0 International License.</a>
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2023, LDBV-BY Doku Team.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
